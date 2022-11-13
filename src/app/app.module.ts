@@ -14,6 +14,7 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 import { ProductsModule } from './components/products/products.module';
 import { AuthModule } from './components/auth/auth.module';
 import { UsersModule } from './components/users/users.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UsersModule } from './components/users/users.module';
     AboutusComponent,
     OrdersComponent,
     SideNavbarComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
