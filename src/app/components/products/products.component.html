@@ -1,1 +1,55 @@
-<p>products works!</p>
+<div class="container-fluid py-3">
+    <div class="row w-100 m-0">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <h4>Products</h4>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="d-flex justify-content-end align-items-center">
+                            <a type="button" class="btn btn-dark me-1" [routerLink]="['./', 'categories']">Manage Product
+                                Categories</a>
+                            <button class="btn btn-dark me-1"  >Add Product</button>
+                        </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-flush m-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Sr. No</th>
+                                <th scope="col">Product Code</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prod of productList; index as idx">
+                                <td>{{ idx + 1 }}</td>
+                                <td>{{ prod["productCode"] }}</td>
+                                <td class="text-wrap">{{ prod["productTitle"] }}</td>
+                                <td class="text-wrap">{{ prod["productDescription"] }}</td>
+                                <td>{{ prod["productCategory"]["categoryName"] }}</td>
+                                <td>{{ prod["price"] | currency:'USD':'symbol':'1.0' }}</td>
+                                <td>
+                                  <button type="button" class="btn btn-sm btn-dark me-1"  >View Images</button>
+                                  <button type="button" class="btn btn-sm btn-dark me-1" >View Details</button>
+                                  <button type="button" class="btn btn-sm btn-dark me-1"  >Update</button>
+                                  <button type="button" class="btn btn-sm btn-danger me-1">Delete</button>
+                                  
+                                </td>
+                              </tr>                       
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

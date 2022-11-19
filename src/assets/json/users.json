@@ -1,0 +1,61 @@
+[
+    {
+        "userId":1,
+        "username":"John",
+        "fullName":"John Snow",
+        "address" :{
+            "street":"34 Norway Street",
+            "city":"Los Angeles",
+            "state": "California",
+            "country":"US",
+            "pincode": 1400022
+        },
+        "email":"john.snow@gmail.com",
+        "img":"",
+        "contact":"9849485545"
+    }, 
+    {
+        "userId":2,
+        "username":"Will",
+        "fullName":"Will Smith",
+        "address" :{
+            "street":"301 Houston Street",
+            "city":"Houston",
+            "state": "Texas",
+            "country":"US",
+            "pincode": 5566022
+        },
+        "email":"will.smith@gmail.com",
+        "img":"",
+        "contact":"42343434545"
+    }, 
+    {
+        "userId":3,
+        "username":"Aria",
+        "fullName":"Aria Stark",
+        "address" :{
+            "street":"301 Chicago Street",
+            "city":"Chicago",
+            "state": "Illinois",
+            "country":"US",
+            "pincode": 8566022
+        },
+        "email":"arai.stark@gmail.com",
+        "img":"",
+        "contact":"12228434545"
+    },{
+        "userId":4,
+        "username":"Hayk",
+        "fullName":"Hayk Chillingaryan",
+        "address" :{
+            "street":"301 Chicago Street",
+            "city":"Chicago",
+            "state": "Illinois",
+            "country":"US",
+            "pincode": 8566022
+        },
+        "email":"hayk@gmail.com",
+        "img":"",
+        "contact":"12228434545"
+    }
+]

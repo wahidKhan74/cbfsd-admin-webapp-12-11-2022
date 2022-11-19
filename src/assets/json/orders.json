@@ -1,0 +1,77 @@
+[
+    {
+      "orderId": 3456789345,
+      "orderDate": "03 December 2021",
+      "orderStatus": "Pending",
+      "products": [
+        {
+          "productId": 1,
+          "productCode": "PRD-ELE-1054",
+          "productImg": "https://m.media-amazon.com/images/I/71J4Q8zM72L._SX466_.jpg",
+          "productTitle": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+          "productDescription": "Easy upgrade for faster boot up, shutdown, application load and response",
+          "productCategory": "Electronics",
+          "price": 300,
+          "quantity": 4,
+          "totalPrice": 1200
+        }
+      ],
+      "totalItems": 1,
+      "itemsSubTotal": 1200,
+      "shipmentCharges": 100,
+      "totalAmount": 1300,
+      "paymentStatus": 0,
+      "paymentStatusTile": "Pending",
+      "paymentMethod": 0,
+      "paymentMethodTitle": "Cash on Delivery (COD)",
+  
+      "userId": 1,
+      "name": "John Snow",
+      "email" : "john.snow@gmail.com",
+      "contact": "9874563211",
+      "address": "ABC Ludhiana 1414001"
+    },
+    {
+        "orderId": 3111789345,
+        "orderDate": "05 April 2022",
+        "orderStatus": "Confirm",
+        "products": [
+          {
+            "productId": 1,
+            "productCode": "PRD-ELE-1054",
+            "productImg": "https://m.media-amazon.com/images/I/71J4Q8zM72L._SX466_.jpg",
+            "productTitle": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+            "productDescription": "Easy upgrade for faster boot up, shutdown, application load and response",
+            "productCategory": "Electronics",
+            "price": 300,
+            "quantity": 4,
+            "totalPrice": 1200
+          },
+          {
+            "productId": 2,
+            "productCode": "PRD-ELE-1054",
+            "productImg": "https://m.media-amazon.com/images/I/61UdeL7aO-L._AC_SX679_.jpg",
+            "productTitle": "HP DeskJet 2755e Wireless Color All-in-One Printer",
+            "productDescription": "Network-Ready, Energy Star Certified, Decal-Printing, Cloud Print Enabled",
+            "productCategory": "Electronics",
+            "price": 6000,
+            "quantity": 4,
+            "totalPrice": 24000
+          }
+        ],
+        "totalItems": 1,
+        "itemsSubTotal": 1200,
+        "shipmentCharges": 100,
+        "totalAmount": 1300,
+        "paymentStatus": 0,
+        "paymentStatusTile": "Confirm",
+        "paymentMethod": 0,
+        "paymentMethodTitle": "Cash on Delivery (COD)",
+    
+        "userId": 1,
+        "name": "Will Smith",
+        "email" : "will.smith@gmail.com",
+        "contact": "9874563211",
+        "address": "ABC Ludhiana 1414001"
+      }
+  ]

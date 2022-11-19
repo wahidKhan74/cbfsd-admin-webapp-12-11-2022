@@ -7,7 +7,9 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { AddproductComponent } from './components/products/addproduct/addproduct.component';
+import { CategoriesComponent } from './components/products/categories/categories.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ViewproductComponent } from './components/products/viewproduct/viewproduct.component';
 import { AdduserComponent } from './components/users/adduser/adduser.component';
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path :'dashboard' , component: DashboardComponent },
   { path :'contactus' , component: ContactusComponent },
   { path :'aboutus' , component: AboutusComponent },
+  { path :'orders' , component: OrdersComponent },
   { path :'auth' , children :[
       {path: 'login' , component: LoginComponent},
       {path: 'register' , component: RegisterComponent},
@@ -35,6 +38,7 @@ const routes: Routes = [
     {path: 'create' , component: AddproductComponent},
     {path: 'update' , component: AddproductComponent},
     {path: 'view' , component: ViewproductComponent},
+    {path: 'categories' , component: CategoriesComponent},
   ]},
   { path:"**", component: NotFoundComponent}
 ];

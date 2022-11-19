@@ -1,0 +1,25 @@
+[
+    {
+      "categoryId": 1,
+      "categoryName": "Electronics",
+      "categoryDescription": "The field of electronics is a branch of physics and electrical engineering that deals with the emission.",
+      "categoryImageUrl": "",
+      "active": true,
+      "addedOn": "10 August 2020"
+    },
+    {
+        "categoryId": 2,
+        "categoryName": "Gifts & Crafts",
+        "categoryDescription": "A gift card, or gift certificate, is a type of fringe benefit. Fringe benefits are benefits you can give employees in addition to their regular wages.",
+        "categoryImageUrl": "",
+        "active": false,
+        "addedOn": "11 August 2020"
+      },{
+        "categoryId": 3,
+        "categoryName": "Furniture",
+        "categoryDescription": "Furniture e-commerce sales are provided by segment (upholstered furniture, outdoor furniture, office furniture, kitchen furniture, other furniture), by region and by distributor",
+        "categoryImageUrl": "",
+        "active": false,
+        "addedOn": "11 August 2020"
+      }
+]

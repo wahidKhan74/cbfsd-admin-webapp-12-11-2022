@@ -1,1 +1,96 @@
-<p>orders works!</p>
+<div class="container-fluid py-3">
+    <div class="row w-100 m-0">
+        <div class="col-12 {{viewOrderBool ? 'col-sm-8' : 'col-sm'}}">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="d-flex flex-column align-items-start">
+                            <h4>Orders</h4>
+                            <div class="d-flex flex-wrap">
+                              <button type="button" class="btn btn-sm me-2" *ngFor="let status of orderStatus; index as idx" [ngClass]="{
+                                'btn-dark': orderStatusIdx === status.value,
+                                'btn-outline-dark': orderStatusIdx !== status.value
+                              }" (click)="changeOrderStatus(status.value)">
+                                {{ status.name }}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-flush m-0">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Sr. No</th>
+                            <th scope="col">Order Id</th>
+                            <th>Order Placed</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Shipment Address</th>
+                            <th>Total Amount</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let order of ordersList ; index as idx">
+                            <th scope="row">{{idx+1}}</th>
+                            <td>{{order["orderId"]}}</td>
+                            <td>{{order["orderDate"]}}</td>
+                            <td>{{order["name"]}}</td>
+                            <td>{{order["email"]}}</td>
+                            <td>{{order["contact"]}}</td>
+                            <td>{{order["address"]}}</td>
+                            <td>{{order["totalAmount"] | currency:'USD'}}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1 {{ viewOrderIdx === idx ? 'd-flex align-items-center' : '' }}"
+                                 (click)="openViewModal(order, idx)">
+                                    View Order Details
+                                  </button>
+                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1">Update Order</button>
+                                <button type="button" class="btn btn-sm btn-danger me-1 mb-1">Delete</button>
+                            </td>
+                          </tr>                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-4" *ngIf="viewOrderBool">
+            <div class="card">
+              <div class="card-header bg-white border-0">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5>Products</h5>
+                  <a type="button" class="btn-sm btn-dark" (click)="closeViewModal()"> close </a>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-flush m-0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>Name / Price</th>
+                      <th class="text-center">Qty.</th>
+                      <th class="text-center">Total Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let prd of orderModel.products; index as idx">
+                      <td>
+                        <div class="d-flex flex-column">
+                          <span>{{ prd["productTitle"] }}</span>
+                          <span class="fw-bold">{{ prd["price"] | currency:'USD':'symbol':'1.0' }}</span>
+                        </div> 
+                      </td>
+                      <td class="text-center">{{ prd["quantity"] }}</td>
+                      <td class="fw-bold text-center">{{ prd["totalPrice"] | currency:'USD':'symbol':'1.0' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
