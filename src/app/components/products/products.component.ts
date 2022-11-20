@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -9,8 +10,9 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit {
 
   public productList:any[] =[];
+  public productInfo:any;
 
-  constructor(private productsService:ProductsService) { }
+  constructor(private productsService:ProductsService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.productsService.getAll().subscribe((response:any)=> {
@@ -19,4 +21,12 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  openModal(modelRef:any, productObj = null) {
+    this.modalService.open(modelRef, { size: "xl" });
+    this.productInfo = productObj;
+  }
+
+  closeModel(modelRef:any) {
+    this.modalService.dismissAll(modelRef);
+  }
 }

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesService } from 'src/app/services/catergories.service';
+import { AddcategoryComponent } from './addcategory/addcategory.component';
 
 
 
@@ -18,7 +19,8 @@ import { CategoriesService } from 'src/app/services/catergories.service';
     AddproductComponent,
     ViewproductComponent,
     DetailsproductComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AddcategoryComponent
   ],
   imports: [
     CommonModule, RouterModule, ReactiveFormsModule

@@ -9,7 +9,7 @@
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="d-flex justify-content-end align-items-center">
-                                <button class="btn btn-dark me-1"  >Add Category</button>
+                                <button class="btn btn-dark me-1" (click)="openProductCategoryDialog(prodCategoryModal)" >Add Category</button>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-dark me-1 mb-1" [disabled]="cat['categoryImageUrl'] === ''">View Image</button>
-                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1" >Update</button>
+                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1" (click)="openProductCategoryDialog(prodCategoryModal,cat )" >Update</button>
                                 <button type="button" class="btn btn-sm btn-danger me-1 mb-1">Delete</button>
                             </td>
                           </tr>                          
@@ -46,3 +46,8 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #prodCategoryModal let-modal class="bg-modal">
+    <app-addcategory [categoryInfo]="categoryInfo" (closeModel)="closeModel(prodCategoryModal)"></app-addcategory>
+</ng-template>

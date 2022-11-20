@@ -11,7 +11,7 @@
                             <div class="d-flex justify-content-end align-items-center">
                             <a type="button" class="btn btn-dark me-1" [routerLink]="['./', 'categories']">Manage Product
                                 Categories</a>
-                            <button class="btn btn-dark me-1"  >Add Product</button>
+                            <button class="btn btn-dark me-1"   (click)="openModal(productModal)">Add Product</button>
                         </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                 <td>
                                   <button type="button" class="btn btn-sm btn-dark me-1"  >View Images</button>
                                   <button type="button" class="btn btn-sm btn-dark me-1" >View Details</button>
-                                  <button type="button" class="btn btn-sm btn-dark me-1"  >Update</button>
+                                  <button type="button" class="btn btn-sm btn-dark me-1" (click)="openModal(productModal, prod)" >Update</button>
                                   <button type="button" class="btn btn-sm btn-danger me-1">Delete</button>
                                   
                                 </td>
@@ -53,3 +53,9 @@
         </div>
     </div>
 </div>
+
+
+<!-- create / update product-->
+<ng-template #productModal let-modal>
+    <app-addproduct [productInfo]="productInfo" (closeModel)="closeModel(productModal)"></app-addproduct>
+</ng-template>
