@@ -1,1 +1,27 @@
-<p>viewproduct works!</p>
+<div class="modal-header border-0 d-flex justify-content-between align-items-center">
+    <h4>Product Details</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()">
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex flex-column mb-1">
+        <span class="text-sm text-muted">Product Code</span>
+        <p>{{ productInfo?.productCode }}</p>
+      </div>
+    <div class="d-flex flex-column mb-1">
+      <span class="text-sm text-muted">Name</span>
+      <p>{{ productInfo?.productTitle }}</p>
+    </div>
+    <div class="d-flex flex-column mb-1">
+      <span class="text-sm text-muted">Price</span>
+      <p>&#8377;{{ productInfo?.price }}</p>
+    </div>
+    <div class="d-flex flex-column mb-1">
+      <span class="text-sm text-muted">Description</span>
+      <p class="text-wrap">{{ productInfo?.productDescription || 'Not Provided' }}</p>
+    </div>
+    <div class="d-flex flex-column mb-1">
+      <span class="text-sm text-muted">Added On</span>
+      <p class="text-wrap">{{ productInfo?.addedOn | date: 'dd MMMM yyyy, hh:MM:ss aa' }}</p>
+    </div>
+  </div>

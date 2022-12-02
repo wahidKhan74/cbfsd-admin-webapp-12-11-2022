@@ -39,8 +39,8 @@
                                 <td>{{ prod["productCategory"]["categoryName"] }}</td>
                                 <td>{{ prod["price"] | currency:'USD':'symbol':'1.0' }}</td>
                                 <td>
-                                  <button type="button" class="btn btn-sm btn-dark me-1"  >View Images</button>
-                                  <button type="button" class="btn btn-sm btn-dark me-1" >View Details</button>
+                                  <button type="button" class="btn btn-sm btn-dark me-1" (click)="openImageModal(viewImageModal, prod.images, prod.thumbnailImage)" >View Images</button>
+                                  <button type="button" class="btn btn-sm btn-dark me-1" (click)="openViewModal(productViewModal, prod)" >View Details</button>
                                   <button type="button" class="btn btn-sm btn-dark me-1" (click)="openModal(productModal, prod)" >Update</button>
                                   <button type="button" class="btn btn-sm btn-danger me-1">Delete</button>
                                   
@@ -58,4 +58,44 @@
 <!-- create / update product-->
 <ng-template #productModal let-modal>
     <app-addproduct [productInfo]="productInfo" (closeModel)="closeModel(productModal)"></app-addproduct>
+</ng-template>
+
+
+<ng-template #productViewModal let-modal>
+    <app-viewproduct [productInfo]="productInfo" (closeModel)="closeModel(productViewModal)"></app-viewproduct>
+</ng-template>
+
+
+<ng-template  #viewImageModal let-modal>
+    <div class="modal-header border-0 d-flex justify-content-between align-items-center">
+        <h3>Images</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-sm-2 px-0 border-right verticalScroll">
+            <ul class="list-group list-group-flush">
+              <li class="list-hover list-group-item" *ngFor="let imgSrc of tempImageFiles; index as idx"
+                (click)="selectedImageIdx = idx">
+                <div class="position-absolute mt-2" *ngIf="thumbnailImageIdx === idx">
+                  <h4 class="badge rounded-pill bg-secondary">Thumbnail Image</h4>
+                </div>
+                <img [src]="imgSrc" [alt]="imgSrc" class="img-fluid rounded shadow-sm" height="64px" loading="lazy">
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-sm-10">
+            <div class="sticky-top">
+              <img [src]="tempImageFiles[selectedImageIdx]" [alt]="tempImageFiles[selectedImageIdx]"
+                class="img-fluid shadow-sm img-style" loading="lazy" title="View Full Image" 
+                (click)="openImage(tempImageFiles[selectedImageIdx])">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-12 d-flex align-items-center justify-content-center">
+          <img [src]="imageUrl" class="img-fluid shadow-sm" alt="" style="height: 25em;">
+        </div> -->
+      </div>
 </ng-template>

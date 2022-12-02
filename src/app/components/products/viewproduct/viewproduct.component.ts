@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-viewproduct',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewproductComponent implements OnInit {
 
+  @Input()
+  public productInfo:any;
+
+
+  @Output()
+  public closeModel: EventEmitter<void> = new EventEmitter<void>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  close() {
+    this.closeModel.emit();
+  }
 }
