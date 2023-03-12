@@ -15,13 +15,14 @@ import { ViewproductComponent } from './components/products/viewproduct/viewprod
 import { AdduserComponent } from './components/users/adduser/adduser.component';
 import { UsersComponent } from './components/users/users.component';
 import { ViewuserComponent } from './components/users/viewuser/viewuser.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path :'' , component: DashboardComponent },
   { path :'dashboard' , component: DashboardComponent },
   { path :'contactus' , component: ContactusComponent },
   { path :'aboutus' , component: AboutusComponent },
-  { path :'orders' , component: OrdersComponent },
+  { path :'orders' , component: OrdersComponent , canActivate: [AuthGuard]},
   { path :'auth' , children :[
       {path: 'login' , component: LoginComponent},
       {path: 'register' , component: RegisterComponent},
@@ -32,14 +33,14 @@ const routes: Routes = [
     {path: 'create' , component: AdduserComponent},
     {path: 'update' , component: AdduserComponent},
     {path: 'view' , component: ViewuserComponent},
-  ]},
+  ], canActivate: [AuthGuard] },
   { path :'products' , children :[
     {path: '' , component: ProductsComponent},
     {path: 'create' , component: AddproductComponent},
     {path: 'update' , component: AddproductComponent},
     {path: 'view' , component: ViewproductComponent},
     {path: 'categories' , component: CategoriesComponent},
-  ]},
+  ], canActivate: [AuthGuard]},
   { path:"**", component: NotFoundComponent}
 ];
 
