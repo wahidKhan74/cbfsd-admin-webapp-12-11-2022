@@ -1,1 +1,64 @@
-<p>adduser works!</p>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()">
+      <!-- <span aria-hidden="true">&times;</span> -->
+    </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="userForm" ngNativeValidate  (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+              <div class="form-group col mt-2">
+                  <label>Full Name</label>
+                  <input type="text" class="form-control" name="fullName" formControlName="fullName">
+              </div>
+              <div class="form-group col mt-2">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" formControlName="email">
+             </div>
+             <div class="form-group col mt-2">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" formControlName="password">
+             </div>
+
+             <div class="form-group col mt-2">
+              <label>Contact</label>
+              <input type="contact" class="form-control" name="contact" formControlName="contact">
+            </div>
+
+             <div class="form-group col mt-2">
+                <label>City</label>
+                <input type="text" class="form-control" name="city" formControlName="city">
+             </div>
+
+             <div class="form-group col mt-2">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" formControlName="state">
+             </div>
+              <div class="form-group col mt-2 d-flex flex-column">
+                  <label for="slideStatus">Status</label>
+                  <div class="btn-group btn-group-toggle" ngbRadioGroup >
+                  <label ngbButtonLabel class="btn-primary btn-sm mr-2">
+                      <input ngbButton type="radio" class="btn-check" [value]="true" formControlName="active" name="active" >Active
+                  </label>
+                  <label ngbButtonLabel class="btn-primary btn-sm">
+                      <input ngbButton type="radio" class="btn-check" [value]="false" formControlName="active" name="active">In-Active
+                  </label>
+                  </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal" (click)="close()">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-dark btn-sm">
+              Save
+              <!-- <span *ngIf="loader">&nbsp;</span>
+              <div *ngIf="loader" class="spinner-border spinner-border-sm text-white" role="status">
+                <span class="sr-only">Loading...</span>
+              </div> -->
+            </button>
+        </div> 
+      </form>
+  </div>
+

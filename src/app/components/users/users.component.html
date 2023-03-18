@@ -2,16 +2,25 @@
     <div class="row w-100 m-0">
         <div class="col">
             <div class="card shadow-sm">
-                <div class="card-header bg-white border-0">
-                    <h4>Users</h4>
+              <div class="card-header bg-white border-0">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                      <h4>Users</h4>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <div class="d-flex justify-content-end align-items-center">
+                          <button class="btn btn-dark me-1" (click)="openModal(userModal)">Add User</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-flush m-0">
                         <thead class="thead-light">
                           <tr>
                             <th scope="col">Sr. No</th>
+                            <th scope="col">userId</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">City</th>
                             <th scope="col">Contact</th>
@@ -21,19 +30,26 @@
                         <tbody>
                           <tr *ngFor="let user of usersList ; index as idx">
                             <th scope="row">{{idx+1}}</th>
+                            <td>{{user["userId"]}}</td>
                             <td>{{user["fullName"]}}</td>
-                            <td>{{user["username"]}}</td>
                             <td>{{user["email"]}}</td>
-                            <td>{{user["address"]["city"]}}, {{user["address"]["state"]}}</td>
+                            <td>{{user["city"]}}, {{user["state"]}}</td>
                             <td>{{user["contact"]}}</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-dark">View Orders</button>
+                            <td>                                  
+                                <button type="button" class="btn btn-sm btn-dark me-1" (click)="openModal(userModal, user)" >Update</button>
+                                <button type="button" class="btn btn-sm btn-dark me-1">View Orders</button>
+                                <button type="button" class="btn btn-sm btn-danger me-1" (click)="deleteUser(user.userId)">Delete</button>
                             </td>
                           </tr>                          
                         </tbody>
                       </table>
                 </div>
-            </div>
         </div>
+      </div>
     </div>
 </div>
+
+<!-- create / update user-->
+<ng-template #userModal let-modal>
+  <app-adduser [userInfo]="userInfo" (closeModel)="closeModel(userModal)"></app-adduser>
+</ng-template>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CategoriesService } from 'src/app/services/catergories.service';
 
 @Component({
   selector: 'app-addcategory',
@@ -13,6 +14,7 @@ export class AddcategoryComponent implements OnInit {
   productCategoryForm:FormGroup = new FormGroup({});
   loader : boolean = false;
   tempFile: any;
+  errResponse:any;
 
   @Input()
   public categoryInfo:any;
@@ -20,7 +22,7 @@ export class AddcategoryComponent implements OnInit {
   @Output()
   public closeModel: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor( private modalService: NgbModal,  private fb:FormBuilder) { }
+  constructor( private modalService: NgbModal,  private fb:FormBuilder, private categoryService:CategoriesService) { }
 
   ngOnInit(): void {
     if(this.categoryInfo) {
@@ -36,9 +38,9 @@ export class AddcategoryComponent implements OnInit {
       this.productCategoryForm = this.fb.group({
         categoryName: ["", Validators.required],
         categoryDescription: ["", Validators.required],
-        categoryImageUrl: ["", Validators.required],
+        categoryImageUrl: [""],
         categoryId: [null],
-        active: [true],
+        active: [1],
         addedOn: [],
       });
     } else {
@@ -51,6 +53,40 @@ export class AddcategoryComponent implements OnInit {
       });
     }
   }
+
+  onSubmit() {
+    if(this.productCategoryForm.valid) {
+      if(this.productCategoryForm.get('userId')) {
+        this.handleUpdate();
+      } else{
+        this.handleCreate();
+      }
+    } else{
+      this.errResponse = "Enable to submit form, Invalid form data";
+      console.log("Invalid Form");
+    }
+  }
+
+  handleCreate() {
+    this.categoryService.save(this.productCategoryForm.getRawValue()).subscribe((response:any)=>{
+      console.log(response);
+      window.location.href ="/products/categories";
+      this.close();
+      },error =>{
+        this.errResponse = error.error.message;
+      })
+  }
+
+  handleUpdate() {
+    this.categoryService.update(this.productCategoryForm.getRawValue()).subscribe((response:any)=>{
+      console.log(response);
+      window.location.href ="/products/categories";
+      this.close();
+      },error =>{
+        this.errResponse = error.error.message;
+      })
+  }
+
 
   checkFileType(event: any) {
     this.tempFile = event.target.files[0];

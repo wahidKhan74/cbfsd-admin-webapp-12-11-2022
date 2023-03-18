@@ -36,7 +36,7 @@
                             <td>
                                 <button type="button" class="btn btn-sm btn-dark me-1 mb-1" [disabled]="cat['categoryImageUrl'] === ''">View Image</button>
                                 <button type="button" class="btn btn-sm btn-dark me-1 mb-1" (click)="openProductCategoryDialog(prodCategoryModal,cat )" >Update</button>
-                                <button type="button" class="btn btn-sm btn-danger me-1 mb-1">Delete</button>
+                                <button type="button" class="btn btn-sm btn-danger me-1 mb-1" (click)="delete(cat.categoryId)">Delete</button>
                             </td>
                           </tr>                          
                         </tbody>

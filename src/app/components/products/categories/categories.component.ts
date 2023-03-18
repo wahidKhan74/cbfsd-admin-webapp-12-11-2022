@@ -16,9 +16,7 @@ export class CategoriesComponent implements OnInit {
   constructor(private categoriesService:CategoriesService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.categoriesService.getAll().subscribe( (response:any)=> {
-      this.categoriesList = response;
-    })
+   this.getAll();
   }
 
   openProductCategoryDialog(modelRef:any, productCategoryObj = null) {
@@ -29,5 +27,18 @@ export class CategoriesComponent implements OnInit {
 
   closeModel(modelRef:any) {
     this.modalService.dismissAll(modelRef);
+  }
+
+  getAll() {
+    this.categoriesService.getAll().subscribe( (response:any)=> {
+      console.log(response);
+      this.categoriesList = response;
+    })
+  }
+  
+  delete(categoryId:any) {
+    this.categoriesService.delete(categoryId).subscribe( (response:any)=> {
+      this.getAll();
+    })
   }
 }
