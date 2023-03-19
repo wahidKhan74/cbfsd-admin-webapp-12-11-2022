@@ -20,7 +20,7 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
     ViewproductComponent,
     DetailsproductComponent,
     CategoriesComponent,
-    AddcategoryComponent
+    AddcategoryComponent,
   ],
   imports: [
     CommonModule, RouterModule, ReactiveFormsModule

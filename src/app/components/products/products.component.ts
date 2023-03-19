@@ -19,10 +19,7 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService:ProductsService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.productsService.getAll().subscribe((response:any)=> {
-      // console.log(response);
-      this.productList = response;
-    })
+    this.getAll();
   }
 
   openModal(modelRef:any, productObj = null) {
@@ -54,4 +51,18 @@ export class ProductsComponent implements OnInit {
   closeModel(modelRef:any) {
     this.modalService.dismissAll(modelRef);
   }
+
+  getAll() {
+    this.productsService.getAll().subscribe((response:any)=> {
+      //console.log(response);
+      this.productList = response.content;
+    })
+  }
+
+  onDelete(productId:any) {
+    this.productsService.delete(productId).subscribe(res=>{
+      this.getAll();
+    })
+  }
+  
 }

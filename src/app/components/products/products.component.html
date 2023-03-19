@@ -25,7 +25,7 @@
                                 <th scope="col">Product Code</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Category</th>
+                                <!-- <th scope="col">Category</th> -->
                                 <th scope="col">Price</th>
                                 <th scope="col">Actions</th>
                               </tr>
@@ -36,13 +36,13 @@
                                 <td>{{ prod["productCode"] }}</td>
                                 <td class="text-wrap">{{ prod["productTitle"] }}</td>
                                 <td class="text-wrap">{{ prod["productDescription"] }}</td>
-                                <td>{{ prod["productCategory"]["categoryName"] }}</td>
+                                <!-- <td>{{ prod["productCategory"]["categoryName"] }}</td> -->
                                 <td>{{ prod["price"] | currency:'USD':'symbol':'1.0' }}</td>
                                 <td>
                                   <button type="button" class="btn btn-sm btn-dark me-1" (click)="openImageModal(viewImageModal, prod.images, prod.thumbnailImage)" >View Images</button>
                                   <button type="button" class="btn btn-sm btn-dark me-1" (click)="openViewModal(productViewModal, prod)" >View Details</button>
                                   <button type="button" class="btn btn-sm btn-dark me-1" (click)="openModal(productModal, prod)" >Update</button>
-                                  <button type="button" class="btn btn-sm btn-danger me-1">Delete</button>
+                                  <button type="button" class="btn btn-sm btn-danger me-1" (click)="onDelete(prod.productId)">Delete</button>
                                   
                                 </td>
                               </tr>                       

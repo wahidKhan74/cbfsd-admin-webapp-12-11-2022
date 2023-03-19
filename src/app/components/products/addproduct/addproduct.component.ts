@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesService } from 'src/app/services/catergories.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -18,6 +19,7 @@ export class AddproductComponent implements OnInit {
   updation: boolean = false;
   loader: boolean = false;
   categoryList:any[] =[];
+  errResponse:any;
 
   @Input()
   public productInfo:any;
@@ -25,7 +27,8 @@ export class AddproductComponent implements OnInit {
   @Output()
   public closeModel: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private modalService: NgbModal,  private fb:FormBuilder,private categoriesService:CategoriesService) { }
+  constructor(private modalService: NgbModal,  private fb:FormBuilder,private categoriesService:CategoriesService,
+    private productService:ProductsService) { }
 
   ngOnInit(): void {
     this.categoriesService.getAll().subscribe( (response:any)=> {
@@ -45,13 +48,14 @@ export class AddproductComponent implements OnInit {
       this.productForm = this.fb.group({
         productId: [],
         productTitle: [null],
+        productCode: [null],
         price: [null],
         images: this.fb.array([]),
         thumbnailImage: [null],
         productDescription: [null],
         productCategory: [null],
         active: [true],
-        addedOn: [],
+        addedOn: [new Date()],
         rating: [0]
       });
     } else {
@@ -59,6 +63,7 @@ export class AddproductComponent implements OnInit {
       this.productForm = this.fb.group({
         productId: [productObj.productId],
         productTitle: [productObj.productTitle],
+        productCode: [productObj.productCode],
         price: [productObj.price],
         images: [productObj.images],
         thumbnailImage: [productObj.thumbnailImage],
@@ -72,6 +77,40 @@ export class AddproductComponent implements OnInit {
       this.tempImageFiles = productObj.images || [];
     }
   }
+
+  onSubmit() {
+    if(this.productForm.valid) {
+      if(this.productForm.get('userId')) {
+        this.handleUpdate();
+      } else{
+        this.handleCreate();
+      }
+    } else{
+      this.errResponse = "Enable to submit form, Invalid form data";
+      console.log("Invalid Form");
+    }
+  }
+
+  handleCreate() {
+    this.productService.save(this.productForm.getRawValue()).subscribe((response:any)=>{
+      console.log(response);
+      window.location.href ="/products";
+      this.close();
+      },error =>{
+        this.errResponse = error.error.message;
+      })
+  }
+
+  handleUpdate() {
+    this.productService.update(this.productForm.getRawValue()).subscribe((response:any)=>{
+      console.log(response);
+      window.location.href ="/products";
+      this.close();
+      },error =>{
+        this.errResponse = error.error.message;
+      })
+  }
+
 
   onSelectOption(category: any) {
     this.productForm.patchValue({

@@ -38,7 +38,7 @@
                           <tr *ngFor="let order of ordersList ; index as idx">
                             <th scope="row">{{idx+1}}</th>
                             <td>{{order["orderId"]}}</td>
-                            <td>{{order["orderDate"]}}</td>
+                            <td>{{order["orderDate"] | date :'YYYY/MM/dd HH:mm:ss'}}</td>
                             <td>{{order["name"]}}</td>
                             <td>{{order["email"]}}</td>
                             <td>{{order["contact"]}}</td>
@@ -49,7 +49,7 @@
                                  (click)="openViewModal(order, idx)">
                                     View Order Details
                                   </button>
-                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1">Update Order</button>
+                                <button type="button" class="btn btn-sm btn-dark me-1 mb-1" (click)="openOrderDialog(orderModal,order )">Update Order</button>
                                 <button type="button" class="btn btn-sm btn-danger me-1 mb-1">Delete</button>
                             </td>
                           </tr>                          
@@ -94,3 +94,7 @@
           </div>
     </div>
 </div>
+
+<ng-template #orderModal let-modal class="bg-modal">
+  <app-addorder [orderInfo]="orderInfo" (closeModel)="closeModel(orderModal)"></app-addorder>
+</ng-template>

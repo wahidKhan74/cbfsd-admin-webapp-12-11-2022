@@ -17,6 +17,8 @@ import { UsersModule } from './components/users/users.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdersService } from './services/orders.service';
+import { AddorderComponent } from './components/orders/addorder/addorder.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { OrdersService } from './services/orders.service';
     ContactusComponent,
     AboutusComponent,
     OrdersComponent,
+    AddorderComponent,
     SideNavbarComponent,
     NotFoundComponent,
   ],
@@ -37,7 +40,8 @@ import { OrdersService } from './services/orders.service';
     ProductsModule,
     AuthModule,
     UsersModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [OrdersService],
   bootstrap: [AppComponent]

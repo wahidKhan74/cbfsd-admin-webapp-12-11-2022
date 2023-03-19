@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { OrdersService } from 'src/app/services/orders.service';
 export class OrdersComponent implements OnInit {
 
   public ordersList:any[]= [];
+  public orderInfo:any;
+
   orderStatusIdx: number = 0;
   orderStatus: { name: string; value: number }[] = [
     { name: 'Placed', value: 0 },
@@ -20,11 +23,12 @@ export class OrdersComponent implements OnInit {
   viewOrderIdx: number | undefined;
   orderModel: any;
 
-  constructor(private ordersService:OrdersService) { }
+  constructor(private ordersService:OrdersService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.ordersService.getAll().subscribe((orders)=> {
-      this.ordersList = orders;
+    this.ordersService.getAll().subscribe((orders:any)=> {
+      console.log(orders);
+      this.ordersList = orders.content;
     })
   }
 
@@ -46,5 +50,15 @@ export class OrdersComponent implements OnInit {
     this.viewOrderBool = false;
   }
 
+
+  openOrderDialog(modelRef:any, orderObj = null) {
+    console.log(orderObj);    
+    this.modalService.open(modelRef,{ size: "xl" });
+    this.orderInfo = orderObj;
+  }
+
+  closeModel(modelRef:any) {
+    this.modalService.dismissAll(modelRef);
+  }
 
 }
