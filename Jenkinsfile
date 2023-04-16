@@ -23,7 +23,7 @@ pipeline {
         stage('Docker build') {
             steps {
                 echo 'Build dokcer image'
-                sh ''' docker image build -t cbfsd-admin-webapp-12-11-2022 .'''
+                bat ''' docker image build -t cbfsd-admin-webapp-12-11-2022 .'''
             }
         }
     }
