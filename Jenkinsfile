@@ -32,7 +32,7 @@ pipeline {
                 echo '----------------- This is a docker deploment phase ----------'
                 bat '''
                 
-                docker container run --restart always --name cbfsd-admin-webapp-container-12-11-2022 -p 8081:8081 -d cbfsd-admin-webapp-12-11-2022
+                docker container run --restart always --name cbfsd-admin-webapp-container-12-11-2022 -p 4200:4200 -d cbfsd-admin-webapp-12-11-2022
             '''
             }
         }
