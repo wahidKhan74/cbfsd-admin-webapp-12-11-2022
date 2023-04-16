@@ -4,5 +4,7 @@ COPY package*.json ./
 RUN npm install  --force
 COPY . .
 RUN npm run build
-EXPOSE 4200
-CMD ["npm", "start"]
+# Serve Application using Nginx Server
+FROM nginx:alpine
+COPY --from=build /app/dist/cbfsd-admin-webapp-12-11-2022/ /usr/share/nginx/html
+EXPOSE 80
