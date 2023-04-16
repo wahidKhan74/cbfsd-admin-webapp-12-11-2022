@@ -1,6 +1,8 @@
-FROM node:alpine as build-stage
+FROM node:16-alpine AS build
 WORKDIR /app
-COPY package*.json /app/
+COPY package*.json ./
 RUN npm install  --force
-COPY ./ /app
-RUN npm run build -- --output-path=./dist/out
+COPY . .
+RUN npm run build
+EXPOSE 4200
+CMD ["npm", "start"]
